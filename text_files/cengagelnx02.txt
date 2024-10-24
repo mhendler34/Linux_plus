@@ -1,0 +1,49 @@
+channel that allows you to log in is called, _:terminal
+user interface which accepts your input & passes it to the kernel for processing, _:shell
+regular user command prompt, _:$
+root user command prompt, _:#
+name of the program to execute, __:command
+specific letters, start with (-) & appear after the command name, _:options
+options that start with (--) are usually composed of __ words:whole
+__ also appear after the command name, but do not start with (-), ):arguments
+Always put a __ between command, options, arguments, otherwise shell does not they are separate:space
+Single instance of a program that operates in its own memory space,_:process
+COMMAND, displays currently logged-in users, _:who
+COMMAND, displays currently logged-in users & their tasks, _:w
+COMMAND, displays your login name, _:whoami
+term to describe parent process creating child process, _:spawn
+memory locatoin that is assigned a name & used to store data, _:variable
+A __ __ only exists in memory space of the SHELL in which it was created,_:shell variable
+The shell variable is available to the parent process but __ available to any child process:not
+syntax for creating shell variable is:variablename=value
+shell _ is a keyboard character that has special meaning:metacharacter
+METACHARACTER that replaces name of variable with the value stored in the variable, _:$
+METACHARACTER, special home directory variable:~
+METACHARACTER, shell script comment:#
+METACHARACTER, background command execution:&
+METACHARACTER, command termination:;
+METACHARACTER, input/output redirection:< << > >>
+METACHARACTER, command piping:|
+METACHARACTER, shell wildcards:* ? []
+METACHARACTER, metacharacter quotes:'' "" \
+METACHARACTER, command substitution, called _ _ & symbols of _ _:back quotes ``
+METACHARACTER, command grouping:() {}
+__ __ marks protectect metacharacter from being interpreted by the shell:single quotation
+That is, a $ is intepreted as a _ and not a __ identified:$ variable
+double quotation marks do not protect, _ _ _:$ \ `
+if only one character needs to be protected, you precede the character with _, instead of quotation:\
+the _ can be used to perform command substition:`
+command substitution means anything between _ _ is treated as another __:back quotes command
+COMMAND to search MAN pages for a keyword, _ -_ _:man -k keyword
+COMMAND, similar to man -k:apropos
+COMMAND, short description of command:whatis
+COMMAND, contains easy to read description & links to other info pages:info
+COMMAND, warn all before shutting down:wall
+COMMAND, power off your system in 4 minutes:shutdown -P +4
+COMMAND, Halts the operating system from executing in 4 min:shutdown -H +4
+COMMAND, reboots system in 4 minutes:shutdown -r +4
+COMMAND, powers of your system immediately:shutdown -P now
+COMMAND, cancels a shutdown:shutdown -c
+COMMAND, powers off you system immediately:poweroff
+COMMAND, reboot your system immediately:reboot
+COMMAND, powers off your system in 1 min:shutdown

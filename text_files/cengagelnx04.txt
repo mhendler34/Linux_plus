@@ -1,0 +1,100 @@
+COMMAND, creates directories:mkdir
+COMMAND, removes EMPTY directories:rmdir
+COMMAND, moves/renames files & directories:mv
+COMMAND, copies files & directories:cp
+COMMAND, copies files & directories full of files:cp -r cp -R
+COMMAND, displays BASH shell aliases:alias
+COMMAND, removes files & directories:rm
+COMMAND, removes files & directories full of files:rm -r rm -R
+COMMAND, removes files:unlink
+Fastest method to search for files is the __ command:locate
+__ command looks in premade database that contains list of all files on system:locate
+COMMNAD, updates the database 'locate' looks in:updatedb
+Slower, more versitale method for locating files is the __ command:find
+Find command searches directory tree __, starting from certain __ for files that meet a __:recursively directory criteria
+Find command syntax, _ _ _ _:find start -criteria what
+COMMAND, searches for a file in directories in the PATH variable:which
+COMMAND, also displays any known aliases for particular command:which
+Command to see contents of PATH variable, _ _:echo $PATH
+__ variable lists directories that are searched for executable files:path
+COMMAND, displays only the first result normally output by 'which' command:type
+COMMAND, only displays what a command is aliased to:type
+COMMAND, displays the location of the command along with man & info pages:whereis
+Hard linked files share the same __ & inode __:inode number
+Hard linked files share the same inode __ & _ _, but the data blocks allow for __ filenames:number data blocks multiple
+To create a hard link you must use the __ command and specify _ arguments, _-_ & _-_:ln 2 existing-file target-file
+A file that is hardlinked to another shares _ inodes & thus, link count is _:2 2
+COMMAND, view inode number of a file _-_:ls -li
+Symbolic links are different because they do NOT share the same __ & _ _ with their _ file:inode data blocks target
+The data blocks in a symlink file only contain the __ to the target file:pathname
+When a user edits a symlinked file, the user is actually editing the __ file:target
+COMMAND, create a symlink file, _ _ _ _:ln -s exisiting target
+What symbol is appended to the end of symlinked file, _:@
+What command shows the @ symbol to a symlink file, _ -_:ls -F
+COMMAND, creates a new file & updates modification date of file:touch
+COMMAND, change ownership of file / directory:chown
+CHOWN syntax requires min of _ arguments, _ _ & _ to change:2 new owner file
+Command to change owner of file1 to user1, _ _ _:chown user1 file1
+Command to change owners of all contents in Desktop directory to user1:chown -R user1 Desktop 
+If a regular user changes ownership of a file/direc they own, they __ gain back the ownership:cannot
+__ user always has the ability to regain the ownership:root
+COMMAND, change group ownership:chgrp
+Command to change group owner of file1 to user1, _ _ _:chgrp user1 file1
+Command to change group owner of all contents in Desktop directory to user1:chgrp -R user1 Desktop 
+To change both the owner & group owner with the same command, use __:chown
+Command to change owner to user1, group to root for all contents in Desktop directory:chown -R user1.root Desktop
+Note, there must be _ spaces between the '.' in the chown command:no
+Section of inode that stores the permissions is called the __:mode
+mode is divided into 3 sections:user group other
+PERMISSIONS -> FILES, allows user to open & read the contents of file:read
+PERMISSIONS -> FILES, allows user to open, read, & edit contents of file:write
+PERMISSIONS -> FILES, allows user to execute the file in memory:execute
+PERMISSIONS -> DIR, allows user to LIST the contents of DIR (if user has exec too):read
+PERMISSIONS -> DIR, allows user to ADD/REMOVE files (if user has exec too):write
+PERMISSIONS -> DIR, allows user to ENTER DIR & work with contents:execute
+If user has 'READ' permissions to a text file, they can use the following commands, _ _ _ _ _ _ _:cat tac head tail more less strings od
+The execute permission on a directory is sometimes referred to as the __ permission:search
+One way to deny any user from accessing a directory & listing all of it contents, remove __ permission from DIR:execute
+COMMAND, to add or remove permissions:chmod
+Command, user add read:chmod u+r
+Command, group remove write:chmod g-w
+Command, other equal execute:chmod o=x
+Command, all categories equal read:chmod a=r
+read, corresponding number:4
+write, corresponding number:2
+execute, corresponding number:1
+rwxrwxrwx, corresponding numbers:421421421
+rwx, corresponding number:7
+rw-, corresponding number:6
+r-x, corresponding number:5
+r--, corresponding number:4
+-wx, corresponding number:3
+-w-, corresponding number:2
+--x, corresponding number:1
+---, corresponding number:0
+New Files default permissions:rw-rw-rw-
+New Directories default permissions:rwxrwxrwx
+Special Variable which takes away permissions from newly created files/dir:umask
+Special Permission, SUID, _ _ _:set user id
+Special Permission, SGID, _ _ _:set group id
+Special Permission, sticky bit:sticky bit
+The SUID has no special function when set on a __:directory
+If SUID set on a file & file is executed, person executing file becomes the temp __ of the file while it is executing:owner
+The SUID can only be applied to __ __ programs:binary compiled
+The SUID will not be interpret on a executable __ __, such as a shell script:text file
+Employees can add files to dir but only delete those files they own when the __ __ is applied:sticky bit
+What letter is SUID when applied to file with execute permissions:s
+What letter is SUID when applied to file without execute permissions:S
+What letters is SGID when applied to directory with execute permissions:s
+What letters is SGID when applied to directory without execute permissions:S
+What letter is the sticky bit:t
+What value is the SUID:4000
+What value is the SGID:2000
+What value is the sitcky bit:1000
+COMMAND, set file ACL:setfacl
+COMMAND, get file ACL:getfacl
+What symbol do you see when ACL are set:+
+COMMAND, to see all attributes assgined to a file:lsattr
+COMMAND, to change attributes assigned to a file:chattr
+command to set the immutability attribute:chattr +i
+not even the root user can modify a file when the __ attribute is set:immutability

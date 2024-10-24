@@ -1,0 +1,144 @@
+**BOOT PROCESS**:ok
+When the computer firt initializes, _ _ _ _ performs a _ _ _ _:basic input output system power on self test
+Following __, BIOS checks config for __ devices & __ __ to execute:post boot operating systems
+(ACRONYM) PXE:preboot execution environment
+booting a operating system across the network is called, __:netbooting
+the MBR/GPT normally contains the __ part of the __ __:first boot loader
+the boot loader can __ & __ the __ __:locate execute operating system
+Partition on the system tha contains the boot loader in the __ sector is called, the __ __:first active partition
+there can only be __ active parition per hard disk drive:one
+If the system has UEFI BIOS then the boot loader is NOT loaded from __/__:MBR GPT
+If the system has UEFI BIOS the system is loaded from the __ __ __:uefi system partition
+The digital signature of the boot loader within the UEFI System Partition is checked, is called, __ __:secure boot
+Secure boot ensures that the the boot loader has not been modified by __:malware
+The boot loader then executes the __ __ from the partition that contains it:linux kernel
+After the Linux kernel is loading into memory, the boot loader is __ longer active:no
+The linux kernel continues to initialize the system by loading __ into __:daemons memory
+System process that provides useful services, is called, a __:daemon
+the First Daemon process on the system is called the __ daemon:initialize
+The __ daemon is reponsible for loading all other daemons on the system to bring it to working order:initialize
+The primary function of the boot loader is to load the __ __ into __:linux kernel memory
+(ACRONYM) GRUB:grand unified bootloader
+The GRUB legacy boot loader has three stages, __, __, __:1 1.5 2
+Stage 1, resides on the __:MBR
+Stage 1.5, resides in the unused __ of space following the __:30kb mbr
+Stage 2, resides in the __ directory:/boot/grub
+Stage 1 simply points to __ __:stage 1.5
+Stage 1.5 loads __ support & proceeds to load __ __:filesystem stage 2
+Stage 2 performs the actual __ __ functions & displays the __ boot loader screen:boot loader graphical
+GRUB legacy conf file, __:/boot/grub/grub.conf
+GRUB calls the partition that contains stage 2, __ __ __:grub root partition
+GRUB root partition is the filesystem that contain the __ directory:/boot
+GRUB root partition should not be confused with the __ __ __:linux root filesystem
+Default OS kernel located on GRUB root partition is called, __:/boot/vmlinuz
+The kernel then mounts the __ filesystem:root
+The kernel then uses a special __ image to load modules into RAM:initramfs
+The initramfs are modules needed by the __ __ at __ __:linux kernel boot time
+(ACRONYM) rhgb:red hat graphical boot
+the keyword __ tells the kernel to avoid printing errors to the screen during system set up:quiet
+COMMAND, reinstall GRUB legacy boot loader, __-__:grub-install
+**GRUB2**:ok
+the main config file for GRUB2 with BIOS systems, is located at, __:/boot/grub2/grub.cfg
+the main config file for GRUB2 with UEFI systems, is located at, __:/boot/efi/EFI
+Each menu entry at the graphical boot screen is ID by a __ paragraph:menuentry
+the MENUENTRY paragraph loads the required hardware support using __ commands:insmod
+Partition # start at __ and are prefixed by __ for MBR & __ for GPT:one msdos gpt
+Next the Linux Kernel is loaded from the specified file on the __ __ __:grub root partition
+An __ image is used to load modules into RAM that are needed by the kernel at boot time:initramfs
+The grub.cfg was not meant to be edited manually, but automatically built via entries from ___ file:/etc/default/grub
+the grub.cfg is also automatically built with output of any shell scripts stored within ___ directory:/etc/grub.d
+For any other settings you should modify the __ file:/etc/default/grub
+After modifying the ___ file or ___ scripts, you run __-__ command to rebuild the grub.cfg file:/etc/default/grub /etc/grub.d grub2-mkconfig
+COMMAND, system w/UEFI BIOS you specify the location of the grub.cfg file within the UEFI System partition ___ :grub2-mkconfig -o /boot/efi/efi/fedora/grub.cfg
+COMMAND, reinstall GRUB2 boot loader, __:grub2-install
+COMMAND, alternative to grub2-mkconfig, __-__:update-grub2
+Invalid entries in the GRUB2 config file or damaged initramfs can prevent the kernel from loading is called, _ _:kernel panic
+Kernel panic is invalid entries in the __ __ file or damamged __:grub2 config initramfs
+In case of kernel panic, either edit the __ config file or generate a new __ image:grub2 initramfs
+COMMAND, generate a new initramfs file, __:dracut
+COMMAND, generate a new initramfs file, __:mkinitrd
+Boot process BIOS,,, __, __, then onto First Hard Disk (__/__, __, __), __ , __:bios post mbr gpt boot loader /boot/vmlinuz init daemons
+Boot process UEFI,,, __, __, then onto First Hard Disk (__/__, __, __), __ , __:uefi post UEFI system parition boot loader /boot/vmlinuz init daemons
+**LINUX INITIALIZATION**:ok
+Traditional Linux systems use UNIUX __ standard for system initialization:sysv
+Modern Linux distributions use __ standard for system initialization:systemd
+Because the init daemon manages several daemons at once, it categorizes them into __:runlevels
+A runlevel defines the __ & __ daemon that are loaded into __ & ___ by the kernel:number type memory executed
+Runlevel 0, COMMON NAME, __, DESCRIPTION, _ _ active _ _, ready to be _ _:halt no daemons in memory powered off
+Runlevel 1, COMMON NAME, _ user mode, DESCRIPTION, enough daemons to allow _ to log in & perform _ _ _:single one system maintenance tasks
+Runlevel 2, COMMON NAME, _ user mode, DESCRIPTION, __ daemons running, allows _ users log in & use _ _:multi most multiple system services
+Runlevel 3, COMMON NAME, _ user mode, DESCRIPTION, same as runlevel 2 but with extra __ __ __ started:extended multi extra networking services 
+Runlevel 4, COMMON NAME, _ _, DESCRIPTION, normally _ _, but can be __ to suit needs:not used not used customized
+Runlevel 5, COMMON NAME, _ mode, DESCRIPTION, same as runlevel 3 but with _ _ program:graphical graphical login
+Runlevel 6, COMMON NAME, __, DESCRIPTION, special runlevel used to:reboot reboot 
+Runlevels are also called __:initstates
+COMMAND, to view current runlevel, __:runlevel
+COMMAND, change a runlevel, __:init
+COMMAND, used in place of init command, __:telinit
+runlevel __, means prior runlevel is nonexistent, __:nj
+FILE, unless otherwise specified, INIT daemon enters default runlevel indicated in __:/etc/inittab
+During boot process INIT daemon executes scripts to prepare system, these are called _ _ scripts:runtime configuration
+On SysV systems, INIT daemon IDs default runlevel in __ file, & then executes files in __ dir that start with _ or _:/etc/inittab /etc/rc#.d s k
+the 'S' in the /etc/rc#.d directory indicates to __ the __ upon entering this __:start daemon runlevel
+the 'K' in the /etc/rc#.d directory indicactes to __ the __ upon entering this __:kill daemon runlevel
+Each file in the /etc/rc#.d directory is a __ link to an executable __ script in the __ directory:symbolic rc /etc/init.d
+Starting & Stopping Daemons manually(ok):ok
+1.) to manipulate daemons after startup, you can execute them directly from the __ directory:/etc/init.d
+COMMAND, restart cron daemon, __ __:/etc/init.d restart
+2.) You can also you the __ command to start, stop or restart any daemon listed within the /etc/init.d directory:service
+COMMAND, restart cron daemon, __ __ __:service cron restart
+COMMAND, modify & list runlevels daemon started in, __:chkconfig
+COMMAND, UBUNTU systems use __-__ command inplace of chkconfig:update-rc.d
+**SYSTEMD INITIALIZATION PROCESS**:ok
+To Systemd each operating system component is called a __:unit
+To Systemd DAEMONS are called __ __:service units
+To Systemd RUNLEVELS are called __ __:target units
+To Systemd, Runlevel 0 is __.__:poweroff.target
+To Systemd, Runlevel 1 is __.__:rescue.target 
+To Systemd, Runlevel 2,3,4 is __.__:multi-user.target 
+To Systemd, Runlevel 5 is __.__:graphical.target 
+To Systemd, Runlevel 6 is __.__:reboot.target 
+The default target on a system with a desktop environment is called the __.__:graphical.target
+Most service units in Systemd to start/stop daemons are located in the __ directory & called __.__:/lib/systemd/system daemon.service
+The __ directory stores the default configuration files for Systemd:/lib/systemd/system
+These files are overriden by the same files in the __ directory:/etc/systemd/system
+Thus, to preserve default Systemd config settings, create/modify files in __ directory:/etc/systemd/system
+COMMAND, Systemd, start, stop, configure daemons, __:sysmtectl
+COMMAND, Systemd, restart cron daemon, _ _ _:systemctl restart crond.service
+COMMAND, Systemd, reload cron daemon, _ _ _:systemctl reload crond.service
+COMMAND, Systemd, display list of all units currenlty running in memory, __:sysmtectl
+COMMAND, Systemd, view information about units, __-__:systemd-analyze
+Systemd config files are called __ files:unit
+Systemd config files are located in __ & __ directories:/lib/systemd/system /etc/ssystemd/system
+**GUI**:ok
+Components of Linux GUI, graphical programs _ _, _ _, _ _, _ _, _ _:x clients desktop environment window manager x windows video hardware
+The Core Component of Linux GUI is called _ _:x windows
+The programs that tell X Windows how to draw graphics & display results are known as _ _:x clients
+X Clients _ _ need to run on the same computer as X Windows:do not
+X Windows is sometimes referred to as the __ component of X Windows, or simply _ _:x server
+X Windows was jointly developed by __ & __ in __:dec mit 1984
+X Windows has been maintained by the __ foundation:x.org
+__ is a new version of X Windows designed to replace x.org:wayland
+To modify the look & feel of X Windows you can use __ __:window manager
+You can use a window manager __ or in __ with a desktop environment:alone conjunction
+The 2 most common Linux desktop environments are __ & __:kde gnome
+(ACRONYM) KDE:K desktop environment
+(ACRONYM) GNOME:GNU network object model environment
+**LOCALIZATION**:ok
+Refers to the collective settings on a system that are specific to a region, __:localization
+The Linux Kernel stores time as the number of seconds since the __ time:epoch
+The Epoch Time date is __ _ __:january 1 1970
+When was the birth of UNIX, __ _ __:january 1 1970
+COMMAND, display time in seconds since Epoch Date:date +%s
+Linux kernel by default obtains the current time from __ settings:bios
+COMMAND, view or modify the time within BIOS (without arguments):hwclock
+COMMAND, print time from BIOS:hwclock
+Timezone information is stored in a __ file __:binary /etc/localtime
+The /etc/localtime file is copy or symlink to __:usr/share/zoneinfo
+COMMAND, view & set both time & time zone:timedatectl
+(ACRONYM) ASCSII:american standard code for information interchange
+ASCII was specific to __ characters & had no international localization points:english
+A new standard extends ASCII to represent nearly all languages, __:unicode
+Character set allows software to use 1-4 bit bytes to represent characters defined by unicode, __:utf-8
+COMMAND, display value for locale variables, __:locale
+COMMAND, to view & change locale settings, __:localectl

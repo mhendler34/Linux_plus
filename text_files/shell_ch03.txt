@@ -1,0 +1,88 @@
+channel that allows you to log in is called, _:terminal
+user interface which accepts your input & passes it to the kernel for processing, _:shell
+regular user command prompt, _:$
+root user command prompt, _:#
+name of the program to execute, __:command
+specific letters, start with (-) & appear after the command name, _:options
+options that start with (--) are usually composed of __ words:whole
+__ also appear after the command name, but do not start with (-), ):arguments
+Always put a __ between command, options, arguments, otherwise shell does not they are separate:space
+Single instance of a program that operates in its own memory space,_:process
+COMMAND, displays currently logged-in users, _:who
+COMMAND, displays currently logged-in users & their tasks, _:w
+COMMAND, displays your login name, _:whoami
+term to describe parent process creating child process, _:spawn
+memory locatoin that is assigned a name & used to store data, _:variable
+A __ __ only exists in memory space of the SHELL in which it was created,_:shell variable
+The shell variable is available to the parent process but __ available to any child process:not
+syntax for creating shell variable is:variablename=value
+shell _ is a keyboard character that has special meaning:metacharacter
+METACHARACTER that replaces name of variable with the value stored in the variable, _:$
+METACHARACTER, special home directory variable:~
+METACHARACTER, shell script comment:#
+METACHARACTER, background command execution:&
+METACHARACTER, command termination:;
+METACHARACTER, input/output redirection:< << > >>
+METACHARACTER, command piping:|
+METACHARACTER, shell wildcards:* ? []
+METACHARACTER, metacharacter quotes:'' "" \
+METACHARACTER, command substitution, called _ _ & symbols of _ _:back quotes ``
+METACHARACTER, command grouping:() {}
+__ __ marks protectect metacharacter from being interpreted by the shell:single quotation
+That is, a $ is intepreted as a _ and not a __ identified:$ variable
+double quotation marks do not protect, _ _ _:$ \ `
+if only one character needs to be protected, you precede the character with _, instead of quotation:\
+the _ can be used to perform command substition:`
+command substitution means anything between _ _ is treated as another __:back quotes command
+COMMAND to search MAN pages for a keyword, _ -_ _:man -k keyword
+COMMAND, similar to man -k:apropos
+COMMAND, short description of command:whatis
+COMMAND, contains easy to read description & links to other info pages:info
+__ COMMAND displays list of all the shell variables & functions in the current process:set
+__ variables ARE visible to the child processes:environment
+to convert a shell variable to ENV variable you need to __:export
+ENV variable syntax, _:export variablename=value
+__ COMMAND deletes the variable & removes it from the environment:unset
+COMMAND shortcut, _:alias
+syntax for alias COMMAND:alias alias_name='command'
+COMMAND to check if alias exists:type -a alias_name
+Alias only exists in the __ in which it was created:shell
+to make an alias permanent it needs to be added to the ___ file:.bashrc
+COMMAND to remove an alias, _:unalias
+METACHARACTER used to NEGATE the special significance of the following character or word, _:\
+COMMAND to view & modify system LOCALE & KEYBOARD settings, _:locatectl
+conf file that stores LOCALE & KEYBOARD settings, _:/etc/locale.conf
+COMMAND to list locality, _:localectl list-locales
+COMMAND to verify changes within /etc/locale.conf,_ _:localectl statuss
+to reset system wide timezone, __ the current __ link to __(file):remove symbolic /etc/localtime
+to remove symbolic link to /etc/localtime, run __ __(file):unlink /etc/localtime
+then, create another __ link to /usr/share/zoneinfo/america/new_york,_ -_ _ _:symbolic ln -sf /usr/share/zoneinfo/america/new_york /etc/localtime
+Linux operating system uses __ clocks:2
+hardware clock is known as _ _ _ & the _ _:real time clock system clock
+COMMAND primarily used for reporting info from & managing SYSTEM clock, _:date
+COMMAND used to manage the Real Time Clock (RTC), _:hwclock
+COMMAND to display current hardware clock time, _ -_:hwclock -r
+COMMAND to set RTC --> System clock, _-_:hwclock -s
+COMMAND to set  System clock -->RTC, _-_:hwclock -w
+COMMAND to view or manage system clocks, _ _:timedatectl status
+COMMAND to display list of timezone _ _-_:timedatectl list-timezones
+COMMAND _ _-_ <_> immediately changes the system-wide time zone:timedatectl set-timezone timezone
+behind the scenes the timedatectl change time zone command, updates the symbolic link between _ (file) & _ (file):/etc/localtime /usr/share/zoneinfo
+if automatic time sync via NTP is enabled, seeting the time with __ will __ work:timedatectl not
+system-wide bash configuration files are __ & __:/etc/profile /etc/bashrc
+bash shell login script order, __ __ __ __:/etc/profile ~/.bash_profile ~/.bashrc /etc/bashrc
+/etc/profile is read how many times at login, _:1
+~/.bash_profile is read how many times at login, _:1
+~/.bashrc is executed __ time a pseudo terminal is started:every
+/etc/bashrc is read __ time a pseudo terminal start:every
+configuration changes are active until they are stored in memory or __:sourced
+COMMAND to source a file _ _:source filename
+another form of redirection is the here document or __:heredoc
+the symbol for heredoc is _:<<
+the __ reads each input line from source until it reaches the limit word:heredoc
+__ redirects standard error messages:2>
+the __ device is a 0-byte character device that is created each time the system boots:/dev/null
+data written to __ is imediately discarded:/dev/null
+COMMAND to display good output to screen and redirect error messages,_:2> /dev/null
+COMMAND to display output to screen & redirect output to a file, _:tee
+

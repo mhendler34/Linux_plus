@@ -1,0 +1,49 @@
+**FILES**:ok
+config file that defines whether name resolution request use /etc/hosts or /etc/resolv.conf:/etc/nsswitch.conf
+config file tells system whether to use manually configured lists or DNS servers when resolving remote systems:/etc/nsswitch.conf
+config files lists DNS name resolution servers & corresponsing IP addresses:/etc/resolv.conf
+config file contains global network settings & does not control which resolution method used first for DNS:/etc/sysconfig/network
+config file is manually configured list of hostnames & IP ADDR for name resolution:/etc/hosts
+DNF config file is stored where, __:/etc/dnf
+to change base config to DNF, admin would edit the __:/etc/dnf/dnf.conf 
+YUM base configuration file is located __:/etc/yum/yum.conf
+editing the YUM config file would NOT change basse DNF config (T/F):true
+(fedora) file to change configuration for default user located, __:/etc/system/user.conf
+configurable file to make changes to linux kernel, located __:/etc/sysctl.conf
+__ __ __ are changes that can be made in the /etc/sysctl.conf file:logging networking security
+file that contains current config for YUM, __:/etc/yum.conf
+file that contains current config for systems controls, _:/etc/sysctl
+file that contains current config for host machine,__:/etc/host.conf
+file that contains current config about YUM repos,_:/etc/yum.repos.d
+(debian) file that adds custom named repo to system, _:/etc/apt/sources.list.d
+file controls the way FILE SYSTEMS are MOUNTED @ BOOT time & during normal ops of system:/etc/fstab
+files contains info about users, userID, groupID, home directory & shell:/etc/passwd
+file contains encrypted password & other security info, only accessible by root:/etc/shadow
+files lists the groups on the sysem & their members:/etc/groups
+file lists the users & groups allowed to use sudo:/etc/sudoers
+command to access /etc/sudoers file _- __:sudo visudo
+config file for SSH server:/etc/ssh/sshd_config
+config file for system's DNS resolver:/etc/resolv.conf
+config file for NETWORK interfaces:/etc/network/interfaces
+file used to map hostnames to IP ADDR, perform local, manual name resolution:/etc/hosts
+config file for Kernel parameters at runtime:/etc/sysctl.conf
+file lists well known SERVICES, PORT, PROTOCOLS:/etc/services
+file used to manage email aliases:/etc/aliases
+SYSTEM-WIDE file to sched tasks to be run automaticall by cron:/etc/crontab
+file is a SCRIPT run at boot time by the init process:/etc/rc.local
+config system locale on Linux system:/etc/default/locale
+file used to set environemnt variables:/etc/environment
+config file for keyboard layout:/etc/default/keyboard
+file used to set resource limits:/etc/security/limits.conf
+config file for software sources for APT:/etc/apt/sources.list
+config file for APT package manager:/etc/apt/apt.conf
+SYSTEM-WIDE config file for bash shell:/etc/bash.bashrc
+config file for NETWORK SETTINGS:/etc/sysconfig/network
+file used to blacklist modules from being loaded into kernel:/etc/modprobe.d/blacklist.conf
+file used to persistently assign NETWORK INTERFACE NAMES:/etc/udev/rules.d/70-persistent-net.rules
+config file for GRUB boot loader:/etc/default/grub
+config file for X Window system:/etc/x11/xorg.conf
+config file for dynamic linker:/etc/ld.so.conf
+config file for authentication mechanism:/etc/pam.d/system-auth
+config file for logrotate utility:/etc/logrotate.conf
+config file for rsyslog daemon:/etc/rsyslog.conf

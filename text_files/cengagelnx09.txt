@@ -1,0 +1,157 @@
+**PROCESSES**:ok
+Executable file on filesystem that can be run when you execute it, ___:program
+Program that is runninging in memory & on the CPU, __:process
+A __ is a __ in action:process program
+If you start a process while logged into the terminal, thaat is called, __ __:user process
+System process that is not associated with a terminal is a called, __ __:daemon process
+Daemon processes are typically started up on system __, but can be started __:startup manually
+Every process has a unique __, that allows the kernel to uniquely identify it:PID
+(ACRONYM) PID:process ID
+In addition, each process can start an __ number of processes,called __ __:unlimited child processes
+Conversely, each process must have been started by a __ __:parent process
+As a result, each process has a __ __ __:parent process ID
+(ACRONYM) PPID:parent process ID
+___ identifies the process that started it:PPID
+Each PID is generated from __ entries in a __ table used by the Linux Kernel:free process
+Remember, that although each process can have an __ number of __ processes, it can only have __ parent process:unlimited child one
+The first process started by the Linux Kernel is the __ __:init daemon
+"Grandfather of all user processes", __ __:init daemon
+The init Daemon has a PID of __ and a PPID of __:1 0
+PPID of 0 refers to the __ itself:kernel
+After login to the system, the login program starts a __:shell
+The __ then interprets the user __, and starts all user __:shell commands processes
+COMMAND, versitle & common to view processes, __:ps
+COMMAND, w/out arguments displays all processes currently running, __:ps
+COMMAND, "full" option to list more info on processes, __-_:ps -f
+Output from ps -f, Column shows the command that started each process, __:CMD
+Output from ps -f, Column shows the time taken on the CPU, __:TIME
+Output from ps -f, Column shows terminal, __:TTY
+Output from ps -f, Column shows start time of process, _-:STIME
+Output from ps -f, Column shows CPU utilization, __:C
+CPU Utilization "C" starts at __ and increments with each __ cycle:0 processer
+COMMAND, display list of processes across all terminals w/ DAEMONS, __-_:ps -ef
+Has a PID 2 and starts most subprocesses within actual Linux Kernel, __ __:kernel thread
+Symbol in TTY column for daemons & kernel subprocesses that do not run on a terminal, __:?
+COMMAND, lists even more option than ps -f, __:ps -l
+Column from ps -l output that indicates particular feature of the process, __ __:process flag
+'ps -l', Process flag column symbol, __:F
+Process state column symbol, __:S
+Process UID column symbol, __:UID
+Process PID column symbol, __:PID
+Process PPID column symbol, __:PPID
+Process C column symbol, __ __:cpu utilization
+Process PRI column symbol, __:priority
+PRI is measured between __ & __:0 127
+PRI column HIGH priority, __:0
+PRO column LOW priority, __:127
+Process NI column symbol, __ __:nice value
+Can be used to affect process priority indirectly, __ __:nice value
+Nice Value (NI) is measured between __ & __:-20 19
+NI value for greater chance of HIGH priority, __:-20
+NI value for greater change of LOW priority, __:19
+Process ADDR column symbol, indicates the __ __ of the process:memory address
+Process SZ column symbol, indicates the __ of the __ in memory:size process
+Process WCHAN column symbol, indicates what the __ is __ for:process waiting
+Process TTY column symbol, __:terminal
+Process TIME column symbol, indicates __ it has taken on __:time cpu
+Process CMD column symbol, indicates the __ that started the process:command
+Column that indicates what the process is doing, __ __:process state
+A process that is NOT being run on the processor at the current time, __ __:interruptible sleep
+Process State Column, S indicates __ __:interruptible sleep
+Process that is currently running on the processor, __:running
+Process State Column, R indicates process is __:running
+Process is waiting for disk access, __ __:uninterruptible sleep
+Process State Column, D indicates, __ __:uniterruptible sleep
+Process Stae Column, __ indicates process has stopped or is being traced by another process, __:T
+Process State Column, Z indicates a __ __:zombie process
+While a process is waiting for its parent process to release the PID, the process is in this state, __ __:zombie state
+When a process a finished executing but still retains PID is known as __ __:zombie state
+Zombie processes are also known as __ __:defunct processes
+COMMAND, view list of zombie process on system __ | __:ps -el | grep Z
+Berkeley Style Options, not prefixed by dash, list all processes across terminal, __:ps a
+Berkeley Style Options, not prefixed by dash, list all process that DO NOT run on terminals, __:ps x
+COMMAND, displays lineage of a process by tracing is PPID, __:pstree
+COMMAND, aside from ps, displays interactive screen listing processes, __:top
+Process that has encountered an error during execution & continuously uses up system resources, __ processes:rogue
+Rogue processes are also known as __ processes:runaway
+COMMAND, to terminate a process, __:kill
+COMMAND, view kill options, __:kill -l
+*****5 most common kill signals*****:ok
+Kill Signal, known as hang up, stops & restarts process w/same PID (Name) __ & (#):sighup 1
+Kill Signal, Sends interrupt signal, one of weakest signals (Name) __ & (#):sigint 2
+Kill Signal, AKA "core dump", quit signal (Name) __ & (#):sigquit 3
+Kill Signal, Most common & default kill signal (Name) __ & (#):sigterm 15
+Kill Signal, Absolute kill signal, sends process resources to /devnull (Name) __ & (#):sigkill 9
+COMMAND, sigquit PID 1199, __:kill -3 1199
+COMMAND, sigquit PID 1199 with name instead, __:kill sigquit 1199
+If you do not specify the kill signal when using the "kill" command, system uses the __ signal, __:default sigterm
+COMMAND, find the PID of a process to use as an argument in kill command, __:pidof
+COMMAND, returns list of PIDs for processes that match a regular expression, __:pgrep
+Some proccess can ignore certain kill signals sent to them is called, __:trap
+The only kill signal that cannot be trapped by any process is __:sigkill
+Thus if SIGINT, SIGQUIT, SIGTERM do not kill a process, use __:sigkill
+You should only use ___ as a last resort:sigkill
+COMMAND, list open files that a process has before sending kill signal, __:lsof
+The __ process, terminates all of its __ processes before terminating itself:parent child
+COMMAND, start child process to prevent it being terminated when parent process is terminated, __:nohup
+COMMAND, kill process that uses the process NAME instead of PID, __:killall
+COMMAND, another command to kill process by name, __:pkill
+In addition to KILL, KILLALL, PKILL, __ utility can kill a process:top
+***PROCESS EXECUTION***:ok
+3 main types of linux commands are, __ __, __ __, __ __:binary programs shell scripts shell functions
+When executing __ __ or __ __, the shell that interprets the command you typed, creates a new __:binary programs shell scripts shell
+This creation of a new subshell is known as __ & is carried out by the __ function in the shell:forking fork
+The new subshell then executes the binary or shell script using it __ function:exec
+After the binary or script has completed, the new shell uses it __ function to kill itself & return control to original __:exit shell
+The shell creates or __, a subshell to execute most commands on the linux syste:forks
+The original shell must wait for the command in the subshell to finish before displaying a shell prompt to accept new commands, __ __:foreground process
+Alternatively, you can omit the wait function by appending an __ character to the command:&
+Commands run in this fashion are known as __ __:background processes
+When a command is run in the background, the shell __ returns the shell prompt for the user to enter another command:immediately
+COMMAND, view the background job ID, __:jobs
+To terminate BACKGROUND process you can send a kill signal to the __ or the __ __ __:pid background job id
+Background JoID must be prefixed with __ character:%
+COMMAND, sigint (2) job id 1, __:kill -2 %1
+COMMAND, move a background command to the foreground, __, prefixed with __, followed by __ __, :fg % job id
+COMMAND, move a command to the background, __, prefixed with __, followed by the __ __ :bg % job id
+COMMAND, send job id 1 to the foreground, __:fg %1
+COMMAND, send job id 1 to the background, __:bg %1
+JOBS command indicates most recent job with __ symbol:+
+JOBS command indicates second most recent job with __ symbol:-
+If you use an __ without the job id, the system executes the most recent background process:%
+The amount of time a process has to use the CPU is called, __ __ :time slice
+The time slices a process has,the more time it has to __ on the CPU & the faster is __:execute executes
+ps -l value, __ directly related to amounnt of time slices a process has on the CPU:pri
+A PRI of __ is the most likely to get time slices on CPU:0
+A PRI of __ is the least likely to get time slices on CPU:127
+You cannot change the PRI __:directly
+You can influence PRI but assigned a certain __ __ to the process:nice value
+A __ nice value increases the likelihood that the process will receive more time slices:negative
+A __ niced value decreases the likelihood that the process will receive more time slices:positive
+Only the __ user can increase the priority of a process by __ its nice value:root lowering
+Process are started with a nice value of __ by default:0
+COMMAND, to start a process with a certain nice value, option __:nice -n
+COMMAND, after a process has started you can change its priority, __:renice
+You can use 2 different daemons to schedule commands, __ daemon & __ daemon:at cron
+This daemon can be used to schedule a command to execute ONCE in the future, __:at
+This daemon can be used to schedule a command to execute REPEATEDLY in the future, __:cron
+After being invoked the at command diplays this prompt, __ allowing you to type comamnds to be execute:at>
+After the commands have been entered, use the __ + __ key to schedule to the commands with at daemon (atd):ctrl + d
+COMMAND, to see scheduled at jobs, __:atq
+COMMAND, atq is a shortcut for __ :at -l
+COMMAND, remove AT job, with job id of 1, __:at -d 1
+COMMAND, to remove AT job, shortcut for at -d, __:atrm
+If the __ & __ files do not exist, only the __ user is allowed schedule jobs:/etc/at.allow /etc/at.deny root
+If both files exist, the system checks the __ and does not process entries in the __ file:/etc/at.allow /etc/at.deny
+The __ __ is better suited for scheduling repetitive tasks:cron daemon
+The Cron Daemon uses configuration files called  __ __ to specify when a command should be executed:cron tables
+2 types of Cron Tables are used, __ cron tables & __ cron tables:user system
+User cron tables exist in the __ directory on Fedora & ___ on Ubuntu sytems:/var/spool/cron /var/sppl/cron/crontabs
+System cron tables exist in the __ as well as the __ directory:/etc/crontab /etc/cron.d
+All users on Fedora can schedule cron jobs because the __ file has no contents:/etc/cron.deny
+If you create an __ file & add users to it, only those added users will be able to schedule jobs:/etc/cron.allow
+Conversely, if you edit the /etc/cron.deny, any users not in the file will be able to schedule jobs:ok
+If both files exist, only the __ file is processed:/etc/cron.allow
+COMMAND, create or edit user cron table, __:crontab
+SYSTEM CRON TABLES can only be edited by the __ user:root
+SYSTEM CRON TABLES are located in the ___ file:/etc/crontab

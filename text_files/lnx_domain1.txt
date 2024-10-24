@@ -1,0 +1,237 @@
+directory that stores boot files:/boot
+read-only directory that stores object libraries, internal binaries & files access to all users:/usr/lib
+directory that lists parameters to configure the system:/proc/sys
+command can generare INITRD image for preloading kernel modules:mkinitrd
+command can generate INITRAMFS image:dracut
+command that automatically looks for the MAKEFILE in the current directory:make
+(ACRONYM) SED:stream editor
+program that modifies text files, global search & replace actions:sed
+comman to install GRUB2 boot loader on a storage device:grub2-efi-install
+directory where GRUB2 files are copied on the EFI system partion:/boot/efi
+(ACRONYM) ESP:efi system partition
+mount point for temporary file mounting:/mnt
+(VFS)virtual file system that represents updated KERNEL info:/proc
+read-only directory that stores small programs & files accessible to all users:/lib
+(VFS)virtual file system that stores info about DEVICES:/sys
+command performs pattern matching on files, based on AWK programming language:awk
+the __ special file is a writeable location for generated data user should discard:/dev/null
+dd command can use the __ as a way of filling storage space:/dev/zero
+the ___ file is a source of random characters:/dev/urandom
+compiling software is a __ step process:3
+configuration script to ensure necessary dependencies & compilers are available:./configure
+command that installs a program, putting appropriate files in correct locations:make install
+File that contains instructions used by a compiler to build a program from source code:makefile
+device that describes a storage device __ __:block device
+__ __ (RAID 0) relies on 2 disks:disk striping
+In __ __ disk partitions are in sections called __ & data is written sequentially through the stripes:disk striping stripes
+disk striping can be referred to as:raid 0
+__ __ (RAID 1) duplicates data on two storage disks:disk mirroring
+In __ __, complete redundancy is provided, but is inefficient use of storage capacity:disk mirroring
+disk mirroring can be referred to as:raid 1
+__ __ with __ (RAID 5) is a modification of RAID 0 that provides fault tolerance:disk striping parity
+disk striping with parity can be referred to as:raid 5
+common approach to storing data on local drive, __ __:file storage
+common approach to storing large quantities of unstructured data stored across multiple platforms, _ _:block storage
+approach to data storage that is cost effective & scalable, best for static data, difficult to modify once written, _ _:object storage
+(ACRONYM) FUSE:filesystem in userspace
+kernal module, feature that supports many virtual filesystems:fuse
+directory that stores binaries to complete boot process & for root use, __:/sbin
+(ACRONYM) UEFI:unified extensible firmware interface
+(ACRONYM) PXE:preboot execution environment
+__ is part of UEFI that enables a client to retrieve the boot loaded & system files from server over network:pxe
+fatal system error is known as, __ __:kernel panic
+tool that copies files locally & on remote systems,__:rsync
+tool that copies only the differences between files, __:rsync
+command that copies & converts files to enable them to be transfered, __:dd
+command that is compression utility & archive functionality, __:zip
+command that combines an older compression utility, compress & tar archive command, __:zip
+command that manages file compression, with .bz2 file extension, __:bzip2
+compression utility, with .gz file extension, __:gzip
+data compression utility, like gzip, .xz format, __:xz
+(ACRONYM) CPIO:copy in out
+tool like tar, copy data in and out of an archive,__:cpio
+command examiness file type and provides info based on that, __:file
+command examines file metadata & provides file size, access info, storage data..., __:stat
+command that updates file's timestamp & if file does not exist, creates it, __:touch
+(ACRONYM) LV:logical volume
+(ACRONYM) VG:volume group
+(ACRONYM) LVM:logical volume manager
+Logical Volume Manager functions on ___ configuration layers for storage:3
+the __ layer of LVM is one or more __ volumes, (drives/partitions allocated to LVM):first physical
+the __ layer of LVM represents the aggregated storage capacity of any designated PVs that the system add to the VG:second
+the __ layer of LVM is one or more __ volumes, which the system treats as standard partitions:top logical
+storage space carved from some of all of the capacity of a volume group, __ __:logical volume
+volume group tool that creates volume groups, __:vgcreate
+creating volume groups __ the storage capacity of one or more physical volumes:aggregates
+volume group tool used with LVM that adds physical volumes to volume groups, __:vgextend
+utility provides a dynamice file that displays messages & status information related to RAID, __:mdadm
+command enables users to view devices free space, file system, total size, % usesd, mount point, __:df
+command enables users to see how a device is used, including size of directory tree & files within it, __:du
+command causes the system to redetect the storage disks & any partition changes, __:partprobe
+running this command confirmss the new partitions exist as expected, __:partprobe
+utility that creates, modifies, deletes partitions, __:fdisk
+command displays info about each device, name, manufacturer, model, ___:lsscsi
+command displays info on storage devices (system is aware of), name, capacity, mount point, __:lsblk
+command displays known info on partitions, __:blkid
+command displays info about existing Fibre Channel adapters, __:fcstat
+logical volume tool, __ changes attributes of logical volumes:lvchange
+logical volume tool, __ creates logical volumes in a volume group:lvcreate
+physical volume tool, __ initializes a drive or partitiohn to use as a physical volume:pvcreate
+logical volume tool, __ used to resize logical volumes:lvresize
+(ACRONYM) CIFS:common internet file system
+(ACRONYM) LUKS:linux unified key setup
+specific implementation of Server Message Block (SMB) on Linux, _ _ _ _:common internet file system
+platform independent full-drive encryption solution, _ _ _ _:linux unified key setup
+*************daemon (define daemon):ok
+systemd command to manage startup:systemctl
+systemctl relies on the syntax __ __ __:systemctl subcommand unit
+systemctl subcommand __ [UNIT] terminates the service or daemon:stop
+systemctl subcommand __ [UNIT] which restarts the service or daemon:restart
+systemctl subcommand __ [UNIT] which sets the service or daemon not to start at boot:disable
+systemctl subcommand __ [UNIT] which prevents a service from being starter by any other service, stronger than disable:mask
+systemctl subcommand __ [UNIT] which displays the current status of the service or daemon:status
+systemctl subcommand __ [UNIT] sets the service or daemon to start at boot(persistent):enable
+systemctl subcommand __ [UNIT] configures the service to start the next time the server starts:enable
+systemctl subcommand __ [UNIT] initiates the service or daemon(not persistent):start
+systemctl subcommand __ [UNIT] prevents a service from being started by any other service, stronger than disable:mask
+systemctl subcommand __ [UNIT] undo the effect of mask:unmask
+systemctl subcommand __ [UNIT] asks all units to reload their configuration:reload
+systemctl subcommand __ [UNIT] show runtime status about unit:status
+***************ADD MORE SYSTEMCTL SUBCOMMAND:OK
+__ command, can brings jobs the system is working on back into view:fg
+__ command, transitions the jobs to be out of sight:bg
+__ command, displays any processes that are runnings:jobs
+__ command, searches for process info based on a string that identifies the process:pgrep
+__ command, alternative to kill, references the process by PID, can terminate processes based on name, users etc..:pkill
+__ command, requires accurate knowledge of the process name:pidof
+jobs are subsets of ___:processes
+user can manage jobs by using the __ meta key:ctrl
+__ + __ temporarily pauses a job's operation:ctrl Z
+__ + __ also moves the job to the background:ctrl Z
+__ + __ stops the running process of a job:ctrl c
+__ command, interactive utility dynamically displays processes consuming most resources, updates every 3 seconds:top
+__ command, user-friendly supplement to top:htop
+__ command, displays open files & what processes opened them:lsof
+__ command, displays the exact process information:ps
+the primary linux task scheduler is __:cron
+cron references what file, ___, to determine whether the user has assigned any tasks:crontab
+processes run or exists in many states (T/F):true
+__, a process state that demonstrates processs is functioning normally & gettings resources it needs:running
+__, a process state is the process exiting or terminating & releasing resources:stopped
+__, a process state occures when the child processes send their exit status to parent processes so parent can release them:zombie
+__, a process state where the process is awaiting access to resources to be able to run:sleeping
+sleeping process state is broken down into 2 substates, __ & __:interruptible uninterruptible
+__ command runs a task once at a specfied time, not designed to be repetitive:at
+__ command allows users to start new processes at a specified priority level, overriding normal priority of the process:nice
+__ command allows running processes a different priority level without restarting the application:renice
+a graceful exit for a process uses __:sigterm
+__, normal kill signal sent to applications:sigterm
+another way to write SIGTERM, __:signal -15
+__, used to avoid data loss or corruption & ensures the program shuts down according to its design:sigterm
+the __ signal is usually last resort:sigkill
+another to way SIGKILL:signal -9
+__, tell the application to exit when the shell closes:sighup
+__, requests that a process exits when the terminal running the processes closes:sighup
+**NETWORKING**:ok
+Type in the command to add static ip 192.168.0.2/24:ip addr add 192.168.0.2/24 dev eth0
+Type in the command to add static ip 192.168.0.2/24:ifconfig eth0 192.168.0.2 netmask 255.255.255.0
+Type in the command to set up routing for 192.168.0.0/24:ip route add 192.168.0.0/24 dev eth0
+__ command is short for netcat:nc
+This command allows the remote system to become identifiable by either IP ADDR or hostname:netcat
+type out nc command syntax to check for all listening ports on a remote server:nc -z domain port
+__ command resolves domain names:host
+type out host command syntax, host <__><__>:host domain name ip address
+__ __ command will resolve the IP ADDR for the liste server:resolvectl query
+when using the netcat command the ports have to be __:numeric
+the __ __ __ comman will return the status of connected network devices:nmcli device status
+the __ command without options will return the staus of all connected ethernet devices, command is deprecated:ifconfig
+the __ command check socket states:ss
+ss command, __ -_ filters to show only TCP connections:ss -t
+ss command, __ -_ tells the command to display all sockets regardless of status:ss -a
+ss command, __ -_ filters the command to show only UDP connections:ss -u
+(ACRONYM) NMCLI:networkmanager command line interface
+command to bring eth0 up _ _ _ _:nmcli con up eth0
+nmcli con up eth0 reads as _ _ _ _ _ _ _:network manager command line interface control up ethernet0
+__ __, command to open the network manager text user interface:nmtui eth0
+__ __ __, command to display the current status of each NIC on system:nmcli device status
+**FILES**:ok
+config file that defines whether name resolution request use /etc/hosts or /etc/resolv.conf:/etc/nsswitch.conf
+config file tells system whether to use manually configured lists or DNS servers when resolving remote systems:/etc/nsswitch.conf
+config files lists DNS name resolution servers & corresponsing IP addresses:/etc/resolv.conf
+config file contains global network settings & does not control which resolution method used first for DNS:/etc/sysconfig/network
+config file is manually configured list of hostnames & IP ADDR for name resolution:/etc/hosts
+DNF config file is stored where, __:/etc/dnf
+to change base config to DNF, admin would edit the __:/etc/dnf/dnf.conf 
+YUM base configuration file is located __:/etc/yum/yum.conf
+editing the YUM config file would NOT change basse DNF config (T/F):true
+(fedora) file to change configuration for default user located, __:/etc/system/user.conf
+configurable file to make changes to linux kernel, located __:/etc/sysctl.conf
+__ __ __ are changes that can be made in the /etc/sysctl.conf file:logging networking security
+file that contains current config for YUM, __:/etc/yum.conf
+file that contains current config for systems controls, _:/etc/sysctl
+file that contains current config for host machine,__:/etc/host.conf
+file that contains current config about YUM repos,_:/etc/yum.repos.d
+(debian) file that adds custom named repo to system, _:/etc/apt/sources.list.d
+command __-_ will transfer only newer files& directories than already exist on remote server:rsync -arui
+command __ _ will recursively write all files & directories to server, & write over old files & directories:sftp put
+command __-_ will recursively write all files & directories to server, & write over old files & directories:scp -rv
+command __-_ will recursively write all files & directories to server, & write over old files & directories:rcp -r
+arp command, __ -_ <ipaddr> will delete cached info from arp table:arp -d
+arp command, __ -_ <ipaddr> will display current info from arp table:arp -a
+arp command, __ -_ <ipaddr> will sets static address:arp -s
+arp command, _ _ _, will delete all dynamic addresses out of the cache:clear arp cache
+network statistics command, __, gathers info about TCP connections, listening ports, NIC info:netstat
+ss command, __ __, info gathering utility that provides info about established TCP connections, listening ports:socket state
+__ command, reports the network path between source & destination:traceroute
+the command, _ _ _ will bring eth0 interface back online:ifconfig eth0 up
+the command, _ _ _ _ _, will bring eth0 interface back online:ip link set eth0 up
+the command, __ __, will brin eth0 interface back online:ifup eth0
+hostname commands, __ _-_ _, permanently set the hostname of server to server01:hostnamectl set-hostname server01
+hostname commands, __ __, set server01 hostname, only until system restarts:hostname server01
+hostname commands, __ -_ __, display information about server01:hostname -d server01
+hostname command, __, without options displays information about server:hostnamectl
+name resolution protocol that queries DNS to display hostname, FQDN, IP ADDR and more:whois
+__ command, will display routing table:route
+__ command, will allow system to trace a path the network is trying to reach:traceroute
+__ command, alternate to traceroute with same characteristics:tracepath
+**BUILD & INSTALL SOFTWARE**:ok
+commmand to download & display list of upgradable packages:sudo apt update && apt list --upgradable
+(fedora) command to list the details for an install package __ __ __:dnf info package
+(fedora) command to list all installed paackages __ __ --__:dnf list --installed
+(fedora) command to list packages no longer in repository, __ __ --__:dnf list --obsoletes
+(fedora) command to list available upgrades for installed packages, __ __ --__:dnf list --upgrades
+(ACRONYM) YUM:yellow dow update manager
+(ACRONYM) RPM:red hat package manager
+(ACRONYM) DNF:dandified yum
+(ACRONYM) APT:advanced packaging tool
+__ manages self-contained applications that run consistently on Linux systems in sandboxed environment:appimage
+__ is another package manager that runs applications in a sandbox environment:flatpak
+__ are self-contained packages with everything necessary to run:snaps
+(fedora) command to remove zsh packages & its dependencies, _ _ _:dnf autoremove zsh
+(fedora) command to display contents of zsh package, _ _ _:dnf provides zsh
+(fedora) command to find out what dependencies zsh package has, _ _ _:dnf deplist zsh
+(fedora) command to locally cache infor about available repositories, _ _:dnf makecache
+(fedora) command to clear out-of-date cache info on available repos, _ _ _:dnf clean all
+command requests SSH run in the background before connecting to server, __ -_:ssh -f
+command tells SSH where logfile is for specific connection, __ -_:ssh -E
+SSH command will select file from which key will be read, __ -_:ssh -i
+SSH command to connect using a customized config file, __ -_:ssh -F
+intelligent command to add/remove modules into/outof Linux Kernel, __ -_ _:modprobe -a module
+simple command to insert modules into Linux kernel, __: insmod
+simple command to display status of modules in Linux kernel, _:lsmod
+simple command designed to remove module from Linux Kernel, _:rmmod
+command gives information about specific module, cannot list dependencies, __:modinfo
+robust service for NTP service, __:chrony
+display list of NTP sources & exit, command is _ _ -_:chronyc sources -a
+typing the command, __, activates the Chrony CLI:chronyc
+the command, __ __, will display which sync sources are online/offline, amongst other:chronyc activity
+__ command sets the location & keyboard settings:localectl
+__ _-_ followed by named locale is used to set location for the system:localectl set-locale
+__ command is a robust command for systemd:systemctl
+command __ _-_-_ _ is used to have system maintain UTC:timedatectl set-local-rtc 0
+command __ _-_ followed by type witll set keyboard layout for the system:localectl set-keymap
+command that lets you set time, date, timezone for system, _:timedatectl
+command to turn ON sync with NTP server, _ _-_ _:timedatectl set-ntp 1
+command to turn OFF sync with NTP server, _ _-_ _:timedatectl set-ntp 0
+command to have server maintain UTC, __ _-_-_ _:timedatectl set-local-rtc 0
+comand to have server convert time to current timezone, __ _-_-_ _:timedatectl set-local-rtc 1

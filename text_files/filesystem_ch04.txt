@@ -1,0 +1,109 @@
+#Naming of file is based Eckert (Cengage) chapter title information with All-In info supplemented:ok
+COMMAND, displays all files including hidden files:ls -a
+COMMAND, displays long listing for directory contents:ls -l
+COMMAND, displays directory contents recursively:ls -R
+COMMAND, displays the inode a filename belongs to:ls -i
+COMMAND, creates directories:mkdir
+COMMAND, removes EMPTY directories:rmdir
+COMMAND, MOVES/RENAMES files & directories:mv
+COMMAND, COPIES files & directories full of file (-r or -R option):cp
+COMMAND, diplays BASH shell aliases:alias
+COMMAND, removes bash shell aliases:unalias
+COMMAND, removes files & directories (-r option):rm
+COMMAND, removes files & symlimks:unlink
+COMMAND, looks in premade database of list of all files on filesystem:locate
+COMMAND, to update the /var/lib/plocate/plocate.db database:updatedb
+COMMAND, slower, more versatile method for locating files:find
+The 2 expressions _ & _ take the stdout from 'find' expression & make it stdin to specified command:-exec -ok
+COMMAND, executes the command without asking for confirmation:-exec
+COMMAND, executes the command but requires user confirmation:-ok
+COMMAND, searching for file that is executable can be found with:which
+WHICH command only searches directories that are listed in the ___ variable:path
+COMMAND, will also display any aliases for a particular command:which
+COMMAND, alt to which, displays only first output XXXXXXXXX:type
+COMMAND, displays location of command, along w/man & info pages:whereis
+COMMAND, displays timestamps & inodes of a file:stat
+COMMAND, create a hard link:ln
+COMMAND, create a soft/sym link:ln -s
+inode stands for _ _:information node
+Linux files consist of _ _ _ _:filename inode data blocks
+The operating system uses the _ to access a file:inode
+__-linked file share the same _ & _ number:hard inode inode
+As a result, hard linked files share the same _ number & _ blocks:inode data
+Thus, when one hardlinked file is modified, the other hard-linked files are __ too:updated
+Symlinks are different from harlinks b/c they do not shre the _ & _ blocks with their target file:inode data
+COMMAND, displays type of file:file
+When files are created, the first few bytes contain the file signature,called the _ _:magic number
+the _ _ indicates the type of contents stored in a file:magic number
+the _ command comares the file's magic number with databases of file signatures to determine file type:file
+COMMAND, update mod date on exisiting file or create a new file if one doesn't exist:touch
+COMMAND, change ownership of file or directory:chown
+COMMAND, change ownership recursively through the directory:chown -R
+CHOWN, syntax to change file1 to new user1 and new group root, _ _._ _:chown user1.root file1
+COMMAND, change group owner of file or directory:chgrp
+section of inode that store permissions is called the, _:mode
+mode is divided into 3 sections, _ _ _:user group other
+octal notation for RWX:7
+octal notation for RW-:6
+octal notation for R-X:5
+octal notation for R--:4
+octal notation for -WX:3
+octal notation for -W-:2
+octal notation for --X:1
+octal notation for ---:0
+COMMAND, change mode for certain file or directory permissions:chmod
+newly created files have the following permissions set _-_-_:rw-rw-rw
+newly created directoiries have the following permissions set ___:rwxrwxrwx
+special variable takes away permissions from newly created files & directories, _:umask
+3 more special permissions are, _ _ _ _:suid sgid sticky bit
+(ACRONYM) SUID:set user id
+SUID octal notation:4000
+(ACRONYM) SGID:set group id
+SGID octal notation:2000
+sticky bit octal notation:1000
+sticky bit works on __ only:directories
+if sticky bit is applied, people can only __ their files and __ delete other people files:delete not
+special permission require file/directories to have __, so they mask the __ permission when displayed with 'ls -l':execute execute
+with special permissions set, the 'x' in execute is masked with _:s
+if special permissions are set on file/directories w/out execute permissions, the s is _:capitalized
+Remeber that assigning special permissions without execute renders those permissions, _:useless
+COMMAND, setfacl stands for, _ _ _:set file acl
+COMMAND, getfacl stands for, _ _ _:get file acl
+what symbol will you see (ls -l) when there is an ACL on a file, _:+
+COMMAND, lsattr stands for:list attributes
+COMMAND, chattr stands for:change attributes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

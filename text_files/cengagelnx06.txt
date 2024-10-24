@@ -1,0 +1,139 @@
+**SERVER**:ok
+Process for running more than operating system on a computer at one time, __:virtualization
+Hypervisor that interacts with the hardware directly, __:type 1
+Hypervisor that runs on existing workstation operating system, __:type 2
+All virtual machines store their configuration in a small configuration file __ to the __:specific hypervisor
+All virtual machines store their actual OS data for the VM in a __ __ __ __ file:separate virtual hard disk
+Dynamically allocating space for virtual hard disk drive is called, _ _:thin provisioning
+Fixing the allocated space for virtual hard disk drive is called, _ _:thick provisioning
+Type of provisioning preferred for server virtualiztion, _ _:thin provisioning
+hyper-v virtual hard disk drive extension, __:.vhdx
+VMWare virtial hard disk drive extension, __:.vmdk
+**SERVER STORAGE**:ok
+(ACRONYM) SCSI:small computer system interface
+Designed to connect multiple peripherals to the system in scalable way, __:scsi
+__ __ hard disk drives were often connected to a single SCSI controller via a single cable daisy chained together:parallel scsi
+(ACRONYM) SAS:serial attached scsi
+Designed in 2005 to replace parallel SCSI, __:SAS
+SAS can transfer data at up to __:22.5gbs
+__ hard disk drives or SSDs can be connected to single SCSI controller via serial connectors:65535
+Before you install Linux on a system with SAS devices, first you connect them to the __ __ via correct serial cable:SCSI controller
+(ACRONYM) RAID:redundant array of independent disks
+RAID usage provides, _ _:fault tolerance
+RAID use, __ up access to hard disk drives:speed
+RAID use, combine multiple _ _ _ into single volume:hard disk drives
+RAID has how many basic configurations, _, numbered from _ to _:7 0 6
+RAID 0 is not __ __:fault tolerant
+RAID 0 is also called, __ __:disk stripping
+Process of dividing file into sections & saving concurrently on 2 or more HDD, one section per disk, _ _:disk stripping
+Disk stripping is __ file into __ & saving __ on _ or more HHD, __ section per __:dividing sections concurrently 2 one disk
+Disk stripping is USEFUL when you need to __ up disk access:speed
+Disk stripping is not __ __:fault tolerant
+If one HDD fails in RAID 0, _ _ _ _:all data is lost
+RAID 1 provides __ __:fault tolerance
+RAID 1 is also called, __ __:disk mirroring
+The __ data is written to __ separate _ _ _ at the same time:same 2 hard disk drives
+This results in __ HDDs with __ information:2 identical
+RAID 1 drawback, __, because you need to purchase __ the HDD space:cost twice
+RAID 2 is no __ __:longer used
+RAID 3 is __ __ with a __ __:disk stripping parity bit
+A Parity Bit is a __, which indicates __ __ __ __:marker what data is where
+RAID 3 requires a minimum of __ HDDS to function, with one of the HDD used to store the __ info:3 parity
+If the parity HDD fails, the system must be restored from __ device:backup
+RAID 4 is a slight variant on RAID __:3
+RAID 5 is the most __ RAID configuration today:common
+RAID 5 is also called __ __ with __:disk stripping parity
+RAID 5 requires a minimum of __ HDDs:3
+However, unlike RAID 3, the parity information is __ stored on a separate HDD:not
+RAID 5 parity info is __ with data that make up the set:intermixed
+RAID 5 offers better __ & __ __:performance fault tolerance
+RAID 5 if 2 HDDs fail at the same time, the data must be restored from a __:backup
+Data loss in the event of power failure is known as __ __ __:raid 5 hole
+RAID 6 is basically RAID __, but adds a __ __ of parity bits:5 second set
+RAID 6 allows for up to __ HDDs failures at the same time:2
+Your first RAID volume will use a __ __ (md) device file called __:multiple disk /dev/md0
+RAID conf file, __:/etc/mdadm/mdadm.conf
+RAID filesystems can be mounted at boot time by editing the __:/etc/fstab
+However, you should like the RAID filesystem __ instead of the __ device file in the /etc/fstab:uuid /dev/md0
+COMMAND, create & manage RAID software AFTER installation, __:mdadm
+(ACRONYM) SAN:storage area network
+2 most common SAN protocols today are __ & __ __:iscsi fibre channel
+(ACRONYM) iSCSI:internet small computer system interface
+Technology that uses ETHERNET network cables to trasfer data to & from SAN device, __, using SCSI protocol:iscsi
+Software component with OS that connects to SAN devices via iSCSI is __ __:iscsi initiator
+The storage that is made available to the iSCSI initiator on the SAN is called, __ __:iscsi target
+Transfer protocol used between a server & SAN device, __:iscsi
+(ACRONYM) FC:fibre channel
+Technology that transport SCSI data to local FC-capable HDD, SSD, or remote SAN device across Ethernet or fiber, __ __:fibre channel
+Fibre Channel data transfer speeds are up to, __:128gbs
+(ACRONYM) MPIO:multipath input output 
+(ACRONYM) ZFS:zetabyte file system
+High-performance, volume mgmt software designed for LARGE-scal linux systems, _ _ _:zetabyte file system
+ZFS filesystem can __ & __ data errors as data is written:detect repair
+Groups of physical disks that ZFS can manage, __ __:zfs pools
+ZFS managed filesystems created from ZFS pools, __ __:zfs volumes
+COMMAND, create ZFS pool called 'data1' from /dev/sdb, __ __:zpool create data1 /dev/sdb
+COMMAND, remove ZFS volume 'data1', __ __ __:zpool destroy data1
+COMMAND, granular mgmt of ZFS, __:zfs
+(ACRONYM) BTRFS:b-tree file system
+Filesystem currently in development, set to replace ___, is __:ext4 btrfs
+BTRFS is not as __ or __ as ZFS:fast robust
+BTRFS does NOT __ & __ repair data as it is written like ZFS:detect repair
+BTRFS uses __ terms to refer to its filesystem structure:3
+Refers to the blocks available for data storage, __:data
+Refers to the inode table, __:metadata
+Refers to the superblock, __:system
+COMMAND to manage BTRFS after is has been created, __:btrfs
+COMMAND to check BTRFS for errors, __ __:btrfs check
+COMMAND to check BTRFS for erros, __:btrfsck
+**INSTALLING SERVER**:ok
+Error in which a program accesses an UNASSIGNED area of RAM, __ __:segmentation fault
+For Linux Kernel to work w/any hardware device, it must have correct  _ _ _ for the device:device driver software
+After the Linux Kernel is loading into memory, it detects hardware devices __ the system:within
+Essential Hardware devices such as __ __, the associated device drivers are compiled in the Linux Kernel:storage devices
+Other devices like video cards have a device driver loaded into the Linux Kernel as a __:module
+Modules end with the __ extension & are typically stored in the ___ directory:.ko /lib/modules/kernelversion
+COMMAND, manually load kernel module, __:insmod
+COMMAND, alternative, manually load kernel module, __:modprobe
+COMMAND, list modules, __:lsmod
+COMMAND, view detailed information about module __:modinfo
+COMMAND, remove a module, __:rmmod
+Linux Kernel loads the associated module for the hardware component it detects as it boots:ok
+However, it may not detect all hardware devices, and those are loaded at boot time from __ __:configuration files
+Moder Linux Distributions locations for module conf files are located at ___ or ___:/etc/modprobe.d /etc/modules-load.d
+COMMAND, show module depencies, __:depmod
+FILES, /proc, Lists commands used to load current kernel, _:/proc/cmdline
+FILES, /proc, Information regarding the processors in the computer, __:/proc/cpuinfo
+FILES, /proc, List of the CHARACTER & BLOCK devices currently in use, __:/proc/devices
+FILES, /proc, List of execution domains for processes on the system, __:/proc/execdomains
+FILES, /proc, List of filesystems support by Kernel, __:/proc/filesystems
+FILES, /proc, List of IRQs on the system, __:/proc/iterrupts
+FILES, /proc, List of memory addresses currently used, __:/proc/iomem
+FILES, /proc, List of memory address ranges reserved for device use, __:/proc/ioports
+FILES, /proc, Representation of physical memory inside computer, __:/proc/kcore
+FILES, /proc, Statistics on the performance of the processor, __:/proc/loadavg
+FILES, /proc, List of file currently locked by the kernel, __:/proc/locks
+FILES, /proc, Configuration of RAID volumes, __:/proc/mdstat
+FILES, /proc, Info regarding physical & virtual memory, __:/proc/meminfo
+FILES, /proc, List of misc devices and their minor numbers, __:/proc/misc
+FILES, /proc, List of currently loaded modules in the kernel, __:/proc/modules
+FILES, /proc, List of currently mounted filesystems, __:/proc/mounts
+FILES, /proc, Information regarding partition tables loaded into memory, __:/proc/partitions
+FILES, /proc, Information on virtual memory utilization, __:/proc/swaps
+FILES, /proc, Version information for kernel, __:/proc/version
+The __ directory is mounted to a pseudo filesystem in RAM:/proc
+The __ directory is also mounted to a pseudo filesystem in RAM:/sys
+COMMANDS that display HARDWARE information:ok
+COMMAND, displays CPU information, __:lscpu
+COMMAND, displays RAM information, __:lsmem
+COMMAND, displays interrupts, IO ports, DMA channels, __:lsdev
+COMMAND, Displays info about connected PCI controllers & devices, __:lspci
+COMMAND, Displays info about connected USB controllers & devices, __:lsusb
+COMMAND, Displays info about connected parallel SCSI, SAS, iSCSI, FV controllers & devices, __:lsscsi
+COMMAND, Displays info about connected BLOCK storage devices, __:lsblk
+COMMAND, Displays GENERAL HARDWARE info,__:lshw
+COMMAND, Displays hardware information detected by BIOS/UEFI, __:dmidecode
+COMMAND, Probes hardware devices on the system & displays related info, __:hwinfo
+COMMAND, Displays the Kernel Ring Buffer, __:dmesg
+COMMAND, Displays same info as 'dmesg' but easy to read format, __:journalctl -k
+COMMAND, change root, __:chroot

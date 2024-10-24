@@ -1,0 +1,185 @@
+**/DEV DIRECTORY**:ok
+Most standard devices on Linux filesystem are represented by a file called, _ _:device file
+There is _ file per device & they are typically found in the _ directory:one /dev
+There are _ methods for transferring data to & from a device:2
+Devices that transfer data character-character are known as _devices:character
+Devices that transfer chunks or blocks of data are known as _ devices:block
+Daemon which is responsible for automatically creating device files as necessary, _:udev
+All device files consists of __ & no _ _:inodes data blocks
+As a result, the entire contents of the /dev Directory is __ KB unless __ files are stored within:0 regular
+__ number points to the device driver for the device in the Linux Kernel:major
+__ number indicates the particular device itself:minor
+Together the device _ _, the _ _, & the _ _ are needed to create a device file:file type major number minor number
+If a devic file becomes corrupted it is listed as a __ file instead of block or character special file:regular
+COMMAND to search for regular files in /dev:find /dev -type f
+COMMAND to recreate the device file, if you know the major/minor numbers:mknod
+COMMAND, recreate /dev/sda1 blocki device, major 8, minor 1, _:mknod /dev/sda1 b 8 1
+COMMAND, see list of block/character devices on system, view contents of,_:cat /proc/devices
+COMMAND, to view block devices on the system, view contents of, _: cat /sys/block
+COMMAND, to list block devices on the system, _:lsblk
+COMMAND, view detailed information for device file, _:udevadm
+COMMAND, view detailed information for sda, _:udevadm info /dev/sda
+Recall from chapter 4, all filesystem shares 3 componenets, _, _ _, _ _:superblock inode table data blocks
+Creating a filesystem on a device is commonly referred to as __:formatting
+refers to making data available, __:mounting
+refers to the process whereby a device is made accessible to users via the directory tree,__:mounting
+Device is attached to a certain directory on the directory tree called a, _ _:mount point
+Remeber that directories are merely files that _ _ contain data:do not
+Directories contain a list of __ & __ organized within them:files subdirectories
+Any __ directory can be used as a mount point:existing
+Safe practice is to create __ directories used specifically for mounting devices:empty
+COMMAND, mount devices to mount point directories, _:mount
+COMMAND, unmount devices from mount point directories, _:umount
+COMMAND, list USB devices, _:lsusb
+COMMAND, make new filesystem, _:mkfs
+COMMAND, format /dev/sdb1 with ext2 filesystem, _:mkfs -t ext2 /dev/sdb1
+(ACRONYM) UUID:universally unique id
+This __ can be used to ID filesystems that need to be mounted at boot time:uuid
+A list of currently mounted filesystems ca nbe obtained by using the __ command:mount
+The mount command reads the information listed in the __ file:/etc/mtab
+It is much easier to view currently mounted filesystem using the __ command or __:lsblk df
+COMMAND, mount syntax, _ _ _ _:mount -t filesystem device mount point
+If you omit the __ option, the mount command attempts to automatically detect teh filesystem:-t
+It is important that no user is currently using the _ _ directory, otherwise, an error message will be displayed:mount point
+COMMAND, check if any user is using mount point directory, _:fuser
+COMMAND, To check whether the /media/USBdrive is being used, _:fuser -u /media/usbdrive
+The 'lost+found' directory is created by default upon creation of _, _, _, filesystems:ext2 ext3 ext4
+The 'lost+found' directory is used by the __ command:fsck
+Similar to mounting, umount requires that no user is using the _ _ directory:mount point
+If a directory contains files, those files are __ until the device is unmounted:hidden
+The /etc/fstab file has __ purposes:2
+/etc/fstab is used to mount __ @ _ _:devices boot time
+/etc/fstab is consulted when user does not specify enough __ on the command line when using the __ command:arguments mount
+/etc/fstab has _ fields:6
+/etc/fstab fields are, __, __ point, __, mount __, __#, __#:device mount type options dump fsck
+The dump# is used by the __ command:dump
+A '1' in this dump field means the filesystem should be __ __:backed up
+A '0' in this dump field means _ _ is necessary:no backup
+COMMAND, checks filesystems at boot time for errors, _:fsck
+A '1' in this fsck field means those files are checked before any with number _:2
+A '0' in this fsck field means those filesystems are __ __:not checked
+COMMAND, display filesystem & partition UUIDs on your system, _:blkid
+COMMAND, alternative to display filesystem & partition UUIDs on system, _ -_:lsblk --fs
+COMMAND, mount all filesystems in the /etc/fstab, _:mount -a
+Device files to use when mounting CD or DVD, __ or __:/dev/cdrom /dev/sr0
+COMMAND, to create new ISO image from a directory of files, _:mkisofs
+**HARD DISK DRIVES & SSDs**:ok
+Hard disk drives typically come in 3 flavors, _, _, _:pata sata scsi
+(ACRONYM) PATA:parallel advanced technology attachment 
+(ACRONYM) SATA:serial advanced technology attachment
+(ACRONYM) SCSI:small computer systems interface
+(ACRONYM) NVME:nonvolatile memory express
+(ACRONYM) SAS:serial attached scsi
+PATA hard disk drives must be set to one of __ configurations:4
+SATA & SCSI/SAS typically have __ data transfer speeds than PATA:faster
+SATA & SCSI/SAS typically allow for more than __ hard disk drives, unlike PATA:4
+First SATA/SCSI/SAS hard disk drive, _:/dev/sda
+Second SATA/SCSI/SAS hard disk drive, _:/dev/sdb
+Third SATA/SCSI/SAS hard disk drive, _:/dev/sdc
+Fourth SATA/SCSI/SAS hard disk drive, _:/dev/sdd
+NVME 1st partition, 1st namespace 1st NVME SSD is, _:/dev/nvme0np1
+**PARTITIONING**:ok
+Linux requires at minimum __ paritions, __ directory and __ directory:2 / /boot
+The system will automatically create a __ file if one is not optionally created:swap
+another term for swap file is compressed __ __ __:zswap ram disk
+zswap ram disk syntax as a special device file, _:/dev/zram0
+Partitions are stored in the 1st readable sector of the HDD known as the _ _ _ :master boot record
+Large Hard Disk Drives (>2TB) & newer HDD use a _ _ _:guid partition table
+GPT don't adhere to the _ primary parition limit, you can create up to __ partitions on GPT:4 128
+COMMAND, create partitions on either MBR of GPT:fdisk
+Disk label type for GPT partitions:gpt
+Disk label type for MBR partitions:msdos
+When creating new parition for MBR, fdisk prompt to selection partition type of _, _, or _:primary extended logical
+COMMAND, create ext4 filesystem on /dev/sda5, _:mkfs -t ext4 /dev/sda5
+After modifying partition tables you can either run __ or _ _ _ to ensure partition changes are seen by kernel:partprobe reboot the system
+COMMAND, inform OS of partition table changes, _:partprobe
+To mount filesystem automatically at boot time, edit the __ file:/etc/fstab
+Although swap partitions do not contain a __:filesystem
+Swap partitions must be __ & __ for use on a Linux System:prepared activated
+COMMAND, prepare the SWAP partition, _:mkswap
+COMMAND, activate SWAP partition, _:swapon
+COMMAND, deactivate SWAP partition, _:swapoff
+COMMAND, prepare SWAP partition of /dev/sda4, _:mkswap /dev/sda4
+COMMAND, active SWAP partition of /dev/sda4, _:swapon /dev/sda4
+COMMAND, deactivate SWAP partition of /dev/sda4, _:/dev/sda4
+You can create __ SWAP partitions, even if your system already uses one:multiple
+COMMAND, easier alternative to fdisk, with GUI, _:cfdisk
+COMMAND, interative GPT manipulator, _:gdisk
+COMMAND, another partition manipulator for both MBR & GPT, _:parted
+As with fdisk, cfdisk, gdisk, parted after changes run __ or _ _ _:partprobe reboot the system
+***LOGICAL VOLUME MANAGER***:ok
+(ACRONYM) LVM:logical volume manager
+The LVm consists of several different components, _, _, _:pv vg lv
+(ACRONYM) PV:physical volume
+(ACRONYM) VG:volume group
+(ACRONYM) LV:logical volume
+Unused partitions on hard disk drives that LVm can use to store info, _ _:physical volumes
+Contains one or more PVs, _ _:volume groups
+They represent the pools of storage space available to LVM for creating LV, _ _:volume groups
+Usable volumes that are created by LVM from avail storage spacer within a VG, _ _:logical volumes
+Contain a filesystem and are mounted to a directory in filesystem, _ _:logical volumes
+To configure LVM, you must first create on or more _ _:physical volumes
+Physical Volumes reference an __ __ on your hard disk drive:unused partition
+COMMAND, create physical volume, _:pvcreate
+COMMAND, create physical volume /dev/sda4:pvcreate /dev/sda4
+COMMAND, display detailed info about each PV, _:pvdisplay
+After you have created Physical Volumes, you create _ _:volume groups
+Volume Groups use the __ in the _ _:space physical volume
+COMMAND, create volume group, _:vgcreate
+COMMAND, create VG called vg00 that uses /dev/sda4 PV, _:vgcreate vg00 /dev/sda4
+(ACRONYM) PE:physical extent
+Block size for saving data in VG, _ _ :physical extent
+When creating a VG, choose the _ _ for _ _ as it CANNOT be safely changed later:block size saving data
+By default, VGCREATE chooses the appropriate _ _ size according to current PV sizes:physical extent
+COMMAND, display detailed info on VG, _:vgdisplay
+Next, you create _ _ from your space in the Volume Groups:logical volumes
+COMMAND, create logical volumes, _:lvcreate
+COMMAND, create LV called 'data1', 10GB, from 'vg00', _:lvcreate -L 10gb -n data1 vg00
+COMMAND, create LV called 'data2', 3GB, from 'vg00', _:lvcreate -L 3gb -n data2 vg00
+COMMAND, display detailed info about logical volumes, _:lvdisplay
+Steps to make/mount partitions:ok
+#1, create new _:partition
+#2, make/create __ on partition:filesystem
+#3, make _ _ for mounting of filesystem:empty directory
+#4, _ new filesystem:mount
+COMMAND, create new PV on /dev/sdb1:pvcreate /dev/sdb1
+COMMAND, extend /dev/sdb1 to vg00:vgextend vg00 /dev/sdb1
+COMMAND, extend LV '5gb' for 'data2' on 'vg00':lvextend -L +5gb -r /dev/vg00/data2
+To resize or add space with LVEXTEND, you must use the -_ option:-r
+COMMAND, creates a PV, _:pvcreate
+COMMAND, creates a VG that includes one or more PVs, _:vgcreate
+COMMAND, creates an LV from available space within VG, _:lvcreate
+COMMAND, removes a PV, _:pvremove
+COMMAND, removes a VG, _:vgremove
+COMMAND, removes a LV, _:lvremove
+COMMAND, adds additional PV to VG, _:vgextend
+COMMAND, removes PVs from VGs,_:vgreduce
+COMMAND, expands the size in LV using free space in VG, _:lvextend
+COMMAND, reduces the size in LV, returning free space to VG, _:lvreduce
+COMMAND, Performs same functions as 'lvextend' & 'lvreduce', _:lvresize
+COMMAND, modify settings for existing PV, _:pvchange
+COMMAND, modify settings for existing VG, _:vgchange
+COMMAND, modify settings for existing LV, _:lvchange
+**DISK USAGE**:ok
+COMMAND, only views mounted filesystems:df
+COMMAND, view size of directory & contents, _:du
+COMMAND, view only summary of total size of directory, _-_:du -hs
+COMMAND, view total # of INODES for mounted filesystem, _-_:df -i
+**FILESYSTEM ERRORS**:ok
+Filesystems that accumulate errors over time, known as _ _:filesystem corruption
+The process of saving data to the filesystem is called, _:syncing
+COMMAND, checks a filesystem for errors, _:fsck
+The filesystem being checked by 'fsck' must be __ before using 'fsck':unmounted
+If 'fsck' finds files it cannot repair, it places them in the _ directory:lost+found
+After placing unrepaired files in 'lost+found' 'fsck' renames the file to the __ number:inode
+'FSCK' command is run at __ time when filesystem is mounted from entries in the __:boot /etc/fstab
+Any entries in the /etc/fstab that have a _ in field #__ are checked first:1 6
+You cannot use 'fsck' to check and repair an __ filesystem:xfs
+COMMAND, repair xfs filesystem, _:xfs_repair
+**DISK QUOTAS**:ok
+To restrict users from using unecessary space, _ _ can be imposed:disk quotas
+Disk quota that user can exceed for certain time with a warning, _ _:soft quota
+Disk quota that user CANNOT exceed, _ _:hard quota
+Quotas are enabled at __ time if there are entries in the __ file:boot /etc/fstab
+COMMAND, turn on quota, _:quotaon
+COMMAND, turn quota off, _:quotaoff
